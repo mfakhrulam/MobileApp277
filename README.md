@@ -6,3 +6,4 @@ This is my first mini project mobile app. The app was created to fulfill my assi
 - Register
 - Logout
 
+## Screenshots
