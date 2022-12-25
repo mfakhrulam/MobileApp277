@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Objects;
+import com.example.mobileapp277.database.AppDBProvider;
+import com.example.mobileapp277.database.User;
+import com.example.mobileapp277.database.UserDao;
 
 public class MainActivity extends AppCompatActivity {
     private static final String DUMMY_NIM = "2000018277";
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnLogin, btnRegister;
     private EditText inpNim, inpPassword;
+
+    private User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.btn_reg);
         inpNim = findViewById(R.id.inp_nim);
         inpPassword = findViewById(R.id.inp_password);
-
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,8 +74,11 @@ public class MainActivity extends AppCompatActivity {
         String currentNim = this.inpNim.getText().toString();
         String currentPassword = this.inpPassword.getText().toString();
 
-        return (Objects.equals(currentNim, DUMMY_NIM) &&
-                Objects.equals(currentPassword, DUMMY_PASSWORD));
+        UserDao daoUser = AppDBProvider.getInstance(this).userDao();
+        currentUser = daoUser.findByNimAndPassword(currentNim, currentPassword);
+        return currentUser!=null?true:false;
+//        return (Objects.equals(currentNim, DUMMY_NIM) &&
+//                Objects.equals(currentPassword, DUMMY_PASSWORD));
     }
 
     private void makeAutoLogin()
