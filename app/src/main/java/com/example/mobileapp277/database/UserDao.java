@@ -18,6 +18,10 @@ public interface UserDao {
     @Query("SELECT * FROM user WHERE nim = :nim AND password = :password LIMIT 1")
     User findByNimAndPassword(String nim, String password);
 
+    @Query("SELECT * FROM user WHERE nim = :nim LIMIT 1")
+    User findByNim(String nim);
+
+
     @Insert
     void insertAll(User... users);
 
