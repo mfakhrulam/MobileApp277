@@ -31,9 +31,6 @@ public class RegisterActivity extends AppCompatActivity {
         this.inpNim = this.findViewById(R.id.inp_nim);
         this.inpPassword = this.findViewById(R.id.inp_password);
 
-//        btn_register.setEnabled(false);
-
-
         this.btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,9 +57,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean auth()
     {
-        // jika nim, nama, password kosong
-        // nim sudah ada
-        // List<String> errorList=new ArrayList<String>();
+        // error jika nim, nama, password kosong
+        // error jika nim sudah ada
+
         String currentNim = this.inpNim.getText().toString().trim();
         String currentName = this.inpName.getText().toString().trim();
         String currentPassword = this.inpPassword.getText().toString().trim();
@@ -86,6 +83,5 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         return false;
-//        return errorList;
     }
 }

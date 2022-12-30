@@ -3,6 +3,7 @@ package com.example.mobileapp277;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +29,8 @@ public class HomeActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPrefs.edit();
                 editor.remove(AUTO_LOGIN_KEY);
                 editor.apply();
+                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
